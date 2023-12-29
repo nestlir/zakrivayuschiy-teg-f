@@ -11,10 +11,139 @@
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
-
 */
 
 .page {
+  padding-top: 100px;
+  color: var(--accent-color);
+  font-family: var(--main-font), sans-serif;
+  font-size: 18px;
+  background-image: var(--background-image);
+  background-size: cover;
+  background-attachment: fixed;
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-variation-settings: 'wgth'var(--main-card-font-weight);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: min(696px, 100%);
+  margin: 0 auto 100px auto;
+  border: 2px solid var(--accent-color);
+  padding: 119px 0 15px 0;
+  color: var(--accent-color);
+  font-family: var(--accent-font, fantasy);
+  background-color: var(--background-color);
+}
+
+.title {
+  margin-bottom: 20px;
+  color: var(--accent-color);
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  text-decoration: none;
+}
+
+.subtitle {
+  margin-bottom: 22px;
+  font-size: clamp(14px, 2.5vw, 23px);
+  line-height: normal;
+  text-transform: uppercase;
+  text-transform: uppercase;
+}
+
+.theme-menu__button {
+  position: relative;
+  margin-bottom: 7px;
+  margin-left: 20px;
+  border: none;
+  padding: 0;
+  outline: none;
+  opacity: 1;
+  font-size: 14px;
+  text-transform: uppercase;
+  background-color: transparent;
+  transition: all .3s ease;
+}
+
+.theme-menu__button:before {
+  content: "▶";
+  position: absolute;
+  left: -18px;
+  color: transparent;
+  font-size: 14px;
+  animation: pulse 1s infinite ease-in-out;
+}
+
+.theme-menu__button:disabled:before {
+  color: var(--accent-color);
+}
+
+.theme-menu__button:hover,
+.theme-menu__button:disabled {
+  opacity: .6;
+}
+
+.theme-menu__button:disabled {
+  pointer-events: none;
+}
+
+.theme-menu__button:hover {
+  cursor: pointer;
+  ;
+}
+
+.theme-menu__button:after {
+  content: '';
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: all 0.5s;
+}
+
+.theme-menu__button:focus-visible::after {
+  width: 100%;
+}
+
+.theme-menu__button:focus {
+  outline: none;
+  opacity: .6;
+}
+
+/* Контент для карточек */
+.card__item {
+  width: min(698px, 99%);
+  background-color: var(--background-color);
+  margin: 0 auto 50px auto;
+  border: 2px solid var(--accent-color);
+}
+
+.card__item_watermark-and-image {
+  position: relative;
+}
+
+.card__item_image {
+  width: 100%;
+  display: block
+}
+
+.card__item_watermark {
+  font-family: var(--accent-font, fantasy);
+  font-size: 14px;
+  opacity: 0.5;
+  mix-blend-mode: hard-light;
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  z-index: 10;
+
+  text-shadow:
+    -1px 0 var(--label-line-color), 
+     0 1px var(--label-line-color), 
+     1px 0 var(--label-line-color), 
+     0 -1px var(--label-line-color);
 }
