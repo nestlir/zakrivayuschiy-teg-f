@@ -6,26 +6,29 @@
 */
 :root.theme-dark {
   --accent-color: #00CC14;
-  --label-line-color: #000;
+  --label: #000;
   --background-image:
     repeating-linear-gradient(to right, #000 0 2px, rgba(0, 0, 0, 0) 2px 4px),
     repeating-linear-gradient(to bottom, #000 0 2px, rgba(0, 0, 0, 0) 2px 4px),
     linear-gradient(to bottom, #007f0c .01%, #004306);
   --background-color: #000;
-  --main-card-font-weight: 465;
-  --header-card-font-weight: 785;
+  --main-weight: 465;
+  --font-weight: 785;
   --color-button-text: #00CC14;
+  --contour: #00cc14;
 }
 
 :root.theme-light {
   --accent-color: #000;
-  --label-line-color: #fff;
+  --label: #fff;
   --background-image:
     repeating-linear-gradient(to right, #d3d3d3 0 2px, rgba(0, 0, 0, 0) 2px 4px),
     repeating-linear-gradient(to bottom, #d3d3d3 0 2px, rgba(0, 0, 0, 0) 2px 4px),
     linear-gradient(to bottom, #e7e7e7 .01%, #1a1a1a);
   --background-color: #fff;
-  --main-card-font-weight: 400;
-  --header-card-font-weight: 700;
+  --main-weight: 400;
+  --font-weight: 700;
   --color-button-text: #fff;
+  --contour: #000;
+  --sparks: #ff0000;
 }
