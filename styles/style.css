@@ -281,7 +281,6 @@ dialog::backdrop {
   border-top: 2px solid var(--accent-color);
 }
 
-
 /* Секция 1 */
 .cards:nth-child(1) .filter {
   animation: changeFilter1 8s infinite;
