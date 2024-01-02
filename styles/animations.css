@@ -38,6 +38,7 @@
 .mark {
   position: absolute;
   left: 82%;
+  z-index: 2;
   opacity: 0.5;
   color: var(--accent-color);
   font-family: var(--accent-font);
@@ -45,117 +46,63 @@
   font-size: var(--font-size-min);
   text-align: center;
   transform: translate(-60%, 90%);
-  z-index: 2;
-}
 
-@supports (mix-blend-mode: hard-light) {
-  .mark {
-    mix-blend-mode: hard-light;
-  }
-}
-
-@supports (text-shadow: 1px 1px 1px var(--label)) {
-  .mark {
-    text-shadow: 1px 1px 1px var(--label);
-    text-transform: uppercase;
-    -webkit-text-stroke: 1px var(--label);
+  @supports (-webkit-text-stroke: 1px transparent) or (text-stroke: 1px transparent) {
+    .mark {
+      -webkit-text-stroke: 1px transparent;
+      text-stroke: 1px transparent;
+    }
   }
 }
 
 /* Настройки кнопки */
-.card__like-button:focus {
-  box-shadow: 2px 2px 0 var(--accent-color);
+.card__icon-button:focus-visible {
+  border-color: var(--accent-color);
+}
+
+.card__icon-button:focus {
   outline: none;
 }
 
-.card__like-button:hover, .save__button:hover {
-  color: var(--background-color);
-  background-color: var(--accent-color);
+.pop__up__button:focus,
+.card__like-button:focus,
+.save__button:focus {
+  box-shadow: 2px 2px 0px 0px var(--accent-color);
+  outline: none;
 }
 
-.card__like-button:after {
-  content: '';
+.pop__up__button:before,
+.card__like-button:before,
+.save__button:before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 0;
-  width: 100%;
+  width: 0;
   height: 100%;
   background-color: var(--accent-color);
-  transition: background-color 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+.pop__up__button:hover:before,
+.card__like-button:hover:before,
+.save__button:hover:before {
+  width: 100%;
+}
+
+.button__text {
+  z-index: 10;
+  color: var(--color-button-text);
   mix-blend-mode: difference;
 }
 
-/* Анимации для иконки сердца */
+/* General heart icon styles */
 .heart {
-  position: relative;
-  transition: fill 0.3s linear;
+  transition: transform 0.3s ease-in-out;
+  transform-origin: center;
 }
 
-.like-icon.is-liked .sparks {
-  animation: sparks 0.3s ease-in-out 0.3s;
-}
-
-.like-icon.is-liked .contour {
-  fill: var(--accent-color);
-  transition: fill 0.1s linear;
-  stroke: var(--main-body);
-  stroke-width: 2;
-}
-
-.like-icon .heart:hover, .like-icon.is-liked .heart {
-  fill: var(--main-body);
-  transition: fill 0.3s linear;
-}
-
-.like-icon:active .heart, .like-icon:hover .heart {
-  fill: var(--main-body);
-  transition: fill 0.3s linear;
-}
-
-.like-icon:hover .contour, .like-icon.is-liked .contour {
-  fill: var(--contour);
-  transition: fill 0.3s linear 0.03s;
-}
-
-.like-icon:active .contour, .like-icon:hover .contour {
-  fill: var(--contour);
-  transition: fill 0.3s linear 0.03s;
-}
-
-.like-icon.is-liked .main-body, .like-icon.is-liked:active .main-body {
-  fill: var(--main-body);
-  transition: fill 0.3s linear 0.05s;
-}
-
-.like-icon.is-liked .core, .like-icon.is-liked:active .core {
-  fill: var(--main-body);
-  transition: fill 0.3s linear;
-}
-
-.like-icon.is-liked .main-body, .like-icon.is-liked .core {
-  fill: var(--main-body);
-  transition: fill 0.3s linear 0.05s;
-}
-
-@keyframes sparks {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-/* Кликабельный лайк */
-.like-icon.is-liked:not(:active) .contour {
-  fill: var(--accent-color);
-  transition: fill 0.1s linear;
-  stroke: var(--main-body); /* Новое свойство для обводки */
-  stroke-width: 2; /* Ширина обводки */
-}
-
+/* Clickable like button styles */
 .card__icon-button {
   display: flex;
   justify-content: center;
@@ -168,48 +115,62 @@
   cursor: pointer;
 }
 
-.card__icon-button:active .like-icon {
-  animation: pulse 0.3s ease-in-out;
-}
-
-.card__icon-button:hover .main-body, .card__icon-button:active .main-body {
-  fill: var(--accent-color);
-  transition: fill 0.3s linear 0.05s;
-}
-
-.card__icon-button:hover .core, .card__icon-button:active .core {
+/* Hover effect on the like button */
+.card__icon-button:hover .main-body,
+.card__icon-button:hover .core,
+.card__icon-button:hover .contour,
+.card__icon-button:hover .heart {
   fill: var(--accent-color);
   transition: fill 0.3s linear;
 }
 
-.card__icon-button:active .main-body, .card__icon-button:active .core {
-  fill: var(--core);
+.card__icon-button:hover .sparks {
+  fill: var(--sparks);
   transition: fill 0.3s linear 0.05s;
 }
 
-.like-icon:hover .core {
-  fill: var(--contour);
+/* Active effect on the like button */
+.card__icon-button:active .main-body,
+.card__icon-button:active .core,
+.card__icon-button:active .contour,
+.card__icon-button:active .heart {
+  fill: var(--sparks);
   transition: fill 0.3s linear;
 }
 
-.like-icon:hover .main-body {
-  fill: var(--contour);
+.card__icon-button:active .sparks {
+  fill: var(--sparks);
   transition: fill 0.3s linear 0.05s;
 }
 
-.like-icon:active .core, .like-icon:active .main-body {
-  fill: var(--main-body);
-  transition: fill 0.3s linear;
+/* Liked state styles */
+.like-icon.is-liked .main-body,
+.like-icon.is-liked .core,
+.like-icon.is-liked .contour {
+  fill: var(--sparks);
+  transition: fill 0.3s linear 0.05s;
 }
 
-.like-icon:not(:hover) .core {
-  transition: fill 0.3s linear 0.03s;
+.is-liked .heart {
+  animation: like-scale 0.3s ease-in 0.1s alternate;
 }
 
-.like-icon:not(:hover) .main-body {
-  transition: fill 0.3s linear 0.03s;
+.is-liked .sparks {
+  animation: sparks 0.3s ease-in 0.3s alternate;
 }
 
+/* Spark animation keyframes */
+@keyframes sparks {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Pulse animation keyframes */
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -224,25 +185,30 @@
   }
 }
 
+/* Sparks icon style */
 .sparks {
   opacity: 0;
   fill: var(--sparks);
 }
 
+/* Main body icon style */
 .main-body {
   fill: var(--core);
   transition: fill 0.3s linear;
 }
 
+/* Core icon style */
 .core {
   fill: var(--core);
   transition: fill 0.3s linear 0.03s;
 }
 
+/* Contour icon style */
 .contour {
   fill: var(--accent-color);
 }
 
+/* Like scale animation keyframes */
 @keyframes like-scale {
   0% {
     transform: scale(1);
@@ -255,6 +221,7 @@
   }
 }
 
+/* Like shine animation keyframes */
 @keyframes like-shine {
   0% {
     opacity: 0;
@@ -265,36 +232,54 @@
   }
 }
 
+.cards img {
+  animation: changeFilter 8s infinite;
+}
+
 .cards img.filter0 {
-  animation: changeFilter0 8s infinite;
+  animation-name: changeFilter0;
 }
 
 .cards img.filter1 {
-  animation: changeFilter1 8s infinite;
+  animation-name: changeFilter1;
 }
 
 .cards img.filter2 {
-  animation: changeFilter2 8s infinite;
+  animation-name: changeFilter2;
 }
 
 .cards img.filter3 {
-  animation: changeFilter3 8s infinite;
+  animation-name: changeFilter3;
 }
 
 .cards img.filter4 {
-  animation: changeFilter4 8s infinite;
+  animation-name: changeFilter4;
 }
 
 .cards img.filter5 {
-  animation: changeFilter5 8s infinite;
+  animation-name: changeFilter5;
 }
 
 .cards img.filter6 {
-  animation: changeFilter6 8s infinite;
+  animation-name: changeFilter6;
 }
 
 .cards img.filter7 {
-  animation: changeFilter7 8s infinite;
+  animation-name: changeFilter7;
+}
+
+@keyframes changeFilter {
+  0% {
+    filter: brightness(150%) contrast(150%);
+  }
+
+  50% {
+    filter: grayscale(100%) blur(3px);
+  }
+
+  100% {
+    filter: brightness(150%) contrast(150%);
+  }
 }
 
 @keyframes changeFilter0 {
@@ -303,7 +288,7 @@
   }
 
   50% {
-    filter: brightness(120%) contrast(130%);
+    filter: grayscale(100%) blur(3px);
   }
 
   100% {
@@ -317,7 +302,7 @@
   }
 
   50% {
-    filter: sepia(30%) saturate(180%);
+    filter: invert(100%) contrast(200%);
   }
 
   100% {
@@ -331,7 +316,7 @@
   }
 
   50% {
-    filter: grayscale(80%) blur(2px);
+    filter: hue-rotate(90deg) brightness(120%);
   }
 
   100% {
@@ -345,7 +330,7 @@
   }
 
   50% {
-    filter: hue-rotate(70deg) brightness(100%);
+    filter: invert(100%) contrast(200%);
   }
 
   100% {
@@ -359,7 +344,7 @@
   }
 
   50% {
-    filter: invert(80%) contrast(180%);
+    filter: saturate(200%) hue-rotate(180deg);
   }
 
   100% {
@@ -373,7 +358,7 @@
   }
 
   50% {
-    filter: saturate(180%) hue-rotate(160deg);
+    filter: brightness(80%) contrast(120%) grayscale(80%);
   }
 
   100% {
@@ -387,7 +372,7 @@
   }
 
   50% {
-    filter: brightness(100%) contrast(140%) grayscale(100%);
+    filter: sepia(20%) saturate(150%) hue-rotate(270deg);
   }
 
   100% {
@@ -401,136 +386,9 @@
   }
 
   50% {
-    filter: sepia(10%) saturate(130%) hue-rotate(250deg);
-  }
-
-  100% {
-    filter: sepia(20%) saturate(150%) hue-rotate(270deg);
-  }
-}
-.cards img.filter0 {
-  animation: changeFilter0 8s infinite;
-}
-
-.cards img.filter1 {
-  animation: changeFilter1 8s infinite;
-}
-
-.cards img.filter2 {
-  animation: changeFilter2 8s infinite;
-}
-
-.cards img.filter3 {
-  animation: changeFilter3 8s infinite;
-}
-
-.cards img.filter4 {
-  animation: changeFilter4 8s infinite;
-}
-
-.cards img.filter5 {
-  animation: changeFilter5 8s infinite;
-}
-
-.cards img.filter6 {
-  animation: changeFilter6 8s infinite;
-}
-
-.cards img.filter7 {
-  animation: changeFilter7 8s infinite;
-}
-
-@keyframes changeFilter0 {
-  0% {
     filter: brightness(150%) contrast(150%);
   }
-  50% {
-    filter: grayscale(100%) blur(3px);
-  }
-  100% {
-    filter: brightness(150%) contrast(150%);
-  }
-}
 
-@keyframes changeFilter1 {
-  0% {
-    filter: sepia(50%) saturate(200%);
-  }
-  50% {
-    filter: invert(100%) contrast(200%);
-  }
-  100% {
-    filter: sepia(50%) saturate(200%);
-  }
-}
-
-@keyframes changeFilter2 {
-  0% {
-    filter: grayscale(100%) blur(3px);
-  }
-  50% {
-    filter: hue-rotate(90deg) brightness(120%);
-  }
-  100% {
-    filter: grayscale(100%) blur(3px);
-  }
-}
-
-@keyframes changeFilter3 {
-  0% {
-    filter: hue-rotate(90deg) brightness(120%);
-  }
-  50% {
-    filter: invert(100%) contrast(200%);
-  }
-  100% {
-    filter: hue-rotate(90deg) brightness(120%);
-  }
-}
-
-@keyframes changeFilter4 {
-  0% {
-    filter: invert(100%) contrast(200%);
-  }
-  50% {
-    filter: saturate(200%) hue-rotate(180deg);
-  }
-  100% {
-    filter: invert(100%) contrast(200%);
-  }
-}
-
-@keyframes changeFilter5 {
-  0% {
-    filter: saturate(200%) hue-rotate(180deg);
-  }
-  50% {
-    filter: brightness(80%) contrast(120%) grayscale(80%);
-  }
-  100% {
-    filter: saturate(200%) hue-rotate(180deg);
-  }
-}
-
-@keyframes changeFilter6 {
-  0% {
-    filter: brightness(80%) contrast(120%) grayscale(80%);
-  }
-  50% {
-    filter: sepia(20%) saturate(150%) hue-rotate(270deg);
-  }
-  100% {
-    filter: brightness(80%) contrast(120%) grayscale(80%);
-  }
-}
-
-@keyframes changeFilter7 {
-  0% {
-    filter: sepia(20%) saturate(150%) hue-rotate(270deg);
-  }
-  50% {
-    filter: brightness(150%) contrast(150%);
-  }
   100% {
     filter: sepia(20%) saturate(150%) hue-rotate(270deg);
   }
