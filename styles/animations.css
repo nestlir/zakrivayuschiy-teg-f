@@ -13,13 +13,14 @@
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
 /* стрелка */
-.theme-menu__button:before {
-  content: "▶";
+.theme-menu__button:disabled::before {
+  content: '▶';
   position: absolute;
-  left: -18px;
-  color: transparent;
-  font-size: 14px;
-  animation: moveArrow 0.5s infinite ease-in-out;
+  width: 14px;
+  height: 14px;
+  animation: moveArrow 0.5s infinite alternate ease-in-out;
+  inset-inline-start: -20px;
+  inset-block-start: 0px;
 }
 
 @keyframes moveArrow {
@@ -34,123 +35,57 @@
   }
 }
 
-/* водный знак */
-.mark {
-  position: absolute;
-  left: 82%;
-  z-index: 2;
-  opacity: 0.5;
-  color: var(--accent-color);
-  font-family: var(--accent-font);
-  font-weight: var(--main-weight);
-  font-size: var(--font-size-min);
-  text-align: center;
-  transform: translate(-60%, 90%);
-
-  @supports (-webkit-text-stroke: 1px transparent) or (text-stroke: 1px transparent) {
-    .mark {
-      -webkit-text-stroke: 1px transparent;
-      text-stroke: 1px transparent;
-    }
-  }
-}
-
-/* Настройки кнопки */
-.card__icon-button:focus-visible {
-  border-color: var(--accent-color);
-}
-
-.card__icon-button:focus {
-  outline: none;
-}
-
-.pop__up__button:focus,
-.card__like-button:focus,
-.save__button:focus {
-  box-shadow: 2px 2px 0px 0px var(--accent-color);
-  outline: none;
-}
-
-.pop__up__button:before,
-.card__like-button:before,
-.save__button:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background-color: var(--accent-color);
-  transition: 0.5s ease-in-out;
-}
-
-.pop__up__button:hover:before,
-.card__like-button:hover:before,
-.save__button:hover:before {
-  width: 100%;
-}
-
-.button__text {
-  z-index: 10;
-  color: var(--color-button-text);
-  mix-blend-mode: difference;
-}
-
 /* General heart icon styles */
 .heart {
   transition: transform 0.3s ease-in-out;
   transform-origin: center;
 }
 
-/* Clickable like button styles */
-.card__icon-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 38px;
-  border: 2px solid transparent;
-  outline: none;
-  background-color: var(--background-color);
-  transition: border 0.3s ease;
-  cursor: pointer;
-}
-
 /* Hover effect on the like button */
 .card__icon-button:hover .main-body,
-.card__icon-button:hover .core,
-.card__icon-button:hover .contour,
-.card__icon-button:hover .heart {
+.card__icon-button:focus-visible .main-body {
   fill: var(--accent-color);
   transition: fill 0.3s linear;
 }
 
-.card__icon-button:hover .sparks {
-  fill: var(--sparks);
+.card__icon-button:hover .core,
+.card__icon-button:focus-visible .core {
+  fill: var(--accent-color);
   transition: fill 0.3s linear 0.05s;
 }
 
+.card__icon-button:hover {
+  cursor: pointer;
+}
+
 /* Active effect on the like button */
-.card__icon-button:active .main-body,
-.card__icon-button:active .core,
-.card__icon-button:active .contour,
-.card__icon-button:active .heart {
+.card__icon-button:active .main-body {
   fill: var(--sparks);
   transition: fill 0.3s linear;
 }
 
-.card__icon-button:active .sparks {
+.card__icon-button:active .core {
   fill: var(--sparks);
-  transition: fill 0.3s linear 0.05s;
+  transition: fill 0.3s linear;
 }
 
 /* Liked state styles */
-.like-icon.is-liked .main-body,
-.like-icon.is-liked .core,
 .like-icon.is-liked .contour {
   fill: var(--sparks);
   transition: fill 0.3s linear 0.05s;
 }
 
+.like-icon.is-liked .main-body {
+  fill: var(--sparks);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--sparks);
+  transition: fill 0.3s linear 0.05s;
+}
+
+/* Liked state animation */
 .is-liked .heart {
   animation: like-scale 0.3s ease-in 0.1s alternate;
 }
@@ -206,6 +141,7 @@
 /* Contour icon style */
 .contour {
   fill: var(--accent-color);
+  transition: fill 0.3s linear 0.05s;
 }
 
 /* Like scale animation keyframes */
@@ -232,54 +168,40 @@
   }
 }
 
-.cards img {
+.card__image {
   animation: changeFilter 8s infinite;
 }
 
-.cards img.filter0 {
-  animation-name: changeFilter0;
-}
-
-.cards img.filter1 {
+.card__image.filter-brightness {
   animation-name: changeFilter1;
 }
 
-.cards img.filter2 {
+.card__image.filter-contrast {
+  animation-name: changeFilter0;
+}
+
+.cards img.filter-saturate {
   animation-name: changeFilter2;
 }
 
-.cards img.filter3 {
+.card__image.filter-hue-rotate {
   animation-name: changeFilter3;
 }
 
-.cards img.filter4 {
+.card__image.filter-invert {
   animation-name: changeFilter4;
 }
 
-.cards img.filter5 {
+.card__image.filter-sepia {
   animation-name: changeFilter5;
 }
 
-.cards img.filter6 {
+.cards img.filter-grayscale {
   animation-name: changeFilter6;
 }
 
-.cards img.filter7 {
+.card__image.filter-futuristic {
   animation-name: changeFilter7;
-}
-
-@keyframes changeFilter {
-  0% {
-    filter: brightness(150%) contrast(150%);
-  }
-
-  50% {
-    filter: grayscale(100%) blur(3px);
-  }
-
-  100% {
-    filter: brightness(150%) contrast(150%);
-  }
 }
 
 @keyframes changeFilter0 {
