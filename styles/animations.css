@@ -18,83 +18,74 @@
   position: absolute;
   width: 14px;
   height: 14px;
-  animation: moveArrow 0.5s infinite alternate ease-in-out;
-  inset-inline-start: -20px;
-  inset-block-start: 0px;
+  animation: moveArrow 0.5s infinite ease-in-out alternate;
 }
 
 @keyframes moveArrow {
 
-  0%,
-  100% {
-    transform: translateX(0);
+  0% {
+    inset-inline-start: -12px;
   }
 
-  50% {
-    transform: translateX(4px);
+  100% {
+    inset-inline-start: -16px;
   }
 }
 
-/* General heart icon styles */
 .heart {
-  transition: transform 0.3s ease-in-out;
+  transition: transform .3s ease-in-out;
   transform-origin: center;
 }
 
-/* Hover effect on the like button */
 .card__icon-button:hover .main-body,
 .card__icon-button:focus-visible .main-body {
   fill: var(--accent-color);
-  transition: fill 0.3s linear;
+  transition: fill .3s linear;
 }
 
 .card__icon-button:hover .core,
 .card__icon-button:focus-visible .core {
   fill: var(--accent-color);
-  transition: fill 0.3s linear 0.05s;
+  transition: fill .3s linear .05s;
 }
 
 .card__icon-button:hover {
   cursor: pointer;
 }
 
-/* Active effect on the like button */
 .card__icon-button:active .main-body {
   fill: var(--sparks);
-  transition: fill 0.3s linear;
+  transition: fill .3s linear;
 }
 
 .card__icon-button:active .core {
   fill: var(--sparks);
-  transition: fill 0.3s linear;
+  transition: fill .3s linear;
 }
 
-/* Liked state styles */
 .like-icon.is-liked .contour {
   fill: var(--sparks);
-  transition: fill 0.3s linear 0.05s;
+  transition: fill .3s linear .05s;
 }
 
 .like-icon.is-liked .main-body {
   fill: var(--sparks);
-  transition: fill 0.3s linear 0.05s;
+  transition: fill .3s linear .05s;
 }
 
 .like-icon.is-liked .core {
   fill: var(--sparks);
-  transition: fill 0.3s linear 0.05s;
+  transition: fill .3s linear .05s;
 }
 
-/* Liked state animation */
 .is-liked .heart {
-  animation: like-scale 0.3s ease-in 0.1s alternate;
+  animation: like-scale .3s ease-in .1s alternate;
 }
 
 .is-liked .sparks {
-  animation: sparks 0.3s ease-in 0.3s alternate;
+  animation: sparks .3s ease-in .3s alternate;
 }
 
-/* Spark animation keyframes */
 @keyframes sparks {
   0% {
     opacity: 0;
@@ -105,7 +96,6 @@
   }
 }
 
-/* Pulse animation keyframes */
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -120,28 +110,24 @@
   }
 }
 
-/* Sparks icon style */
 .sparks {
   opacity: 0;
   fill: var(--sparks);
 }
 
-/* Main body icon style */
 .main-body {
   fill: var(--core);
-  transition: fill 0.3s linear;
+  transition: fill .3s linear;
 }
 
-/* Core icon style */
 .core {
   fill: var(--core);
-  transition: fill 0.3s linear 0.03s;
+  transition: fill .3s linear .03s;
 }
 
-/* Contour icon style */
 .contour {
   fill: var(--accent-color);
-  transition: fill 0.3s linear 0.05s;
+  transition: fill .3s linear .05s;
 }
 
 /* Like scale animation keyframes */
