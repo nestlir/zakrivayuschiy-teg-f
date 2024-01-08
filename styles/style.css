@@ -211,8 +211,7 @@
   mix-blend-mode: difference;
 }
 
-.button:hover::before,
-.button:focus::before {
+.button:hover::before {
   transform: scaleX(1);
 }
 
