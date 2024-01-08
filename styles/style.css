@@ -159,31 +159,28 @@
 
 .mark {
   position: absolute;
-  z-index: 2;
+  top: 25px;
+  right: 25px;
+  z-index: 10;
   opacity: 0.5;
-  color: var(--accent-color);
-  font-family: var(--accent-font), sans-serif;
-  font-weight: var(--main-weight, 400) "wght";
-  font-size: var(--font-size-min);
-  text-align: center;
-  inset-inline-end: 25px;
-  inset-block-start: 25px;
+  font-family: var(--accent-font, fantasy);
+  font-size: 14px;
+  text-shadow:
+    -1px 0 var(--label),
+    0 1px var(--label),
+    1px 0 var(--label),
+    0 -1px var(--label);
+  mix-blend-mode: hard-light;
 }
 
-@supports (-webkit-text-stroke: 1px transparent) or (text-stroke: 1px transparent) {
-  .mark {
+@supports((text-stroke: 1px var(--label-line-color)) or (-webkit-text-stroke: 1px var(--label-line-color))) {
+  .card__item_watermark {
     text-shadow: none;
-    -webkit-text-stroke: 1px transparent;
-    text-stroke: 1px transparent;
+    -webkit-text-stroke: 1px var(--label-line-color);
+    text-stroke: 1px var(--label-line-color);
   }
 }
 
-/* Добавляем text-shadow в случае, если text-stroke не поддерживается */
-@supports not ((-webkit-text-stroke: 1px transparent) or (text-stroke: 1px transparent)) {
-  .mark {
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-  }
-}
 
 .card_wrapper,
 .wrapper {
@@ -193,6 +190,7 @@
 
 .card_wrapper {
   justify-content: end;
+  gap: 10px;
   margin: 0 25px 25px 0;
 }
 
@@ -209,8 +207,7 @@
   outline: none;
 }
 
-.button:hover .button__text,
-.button:focus .button__text {
+.button:hover .button__text {
   mix-blend-mode: difference;
 }
 
@@ -352,7 +349,12 @@ dialog::backdrop {
   z-index: 2;
   width: 21px;
   height: 21px;
-  stroke: var(--color-button-text);
+}
+
+.card__like-button:hover .floppy,
+.pop__up__button:hover .floppy,
+.save__button:hover .floppy {
+  color: var(--background-color);
   mix-blend-mode: difference;
 }
 
