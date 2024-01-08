@@ -217,7 +217,7 @@
 }
 
 .card__icon-button {
-  width: 50px;
+  width: 42px;
   height: 38px;
   border: 2px solid transparent;
   outline: none;
@@ -266,7 +266,7 @@
 
 .save__button {
   gap: 10px;
-  width: 330px;
+  width: 340px;
   min-height: 51px;
   margin: 0 auto 80px;
   border: 2px solid var(--accent-color);
@@ -281,8 +281,12 @@
   mix-blend-mode: difference;
 }
 
+.text_transform {
+  text-transform: uppercase;
+}
+
 .pop__up__button {
-  width: 257px;
+  width: 269px;
   height: 38px;
   margin-top: 30px;
 }
