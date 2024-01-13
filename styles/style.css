@@ -174,16 +174,15 @@
   }
 }
 
+.card_wrapper {
+  justify-content: end;
+  margin: 0 25px 25px 0;
+}
+
 .card_wrapper,
 .wrapper {
   display: flex;
   align-items: center;
-}
-
-.card_wrapper {
-  justify-content: end;
-  gap: 10px;
-  margin: 0 25px 25px 0;
 }
 
 .button {
@@ -198,7 +197,7 @@
   overflow: hidden;
   font: var(--font-size-min) / 90% var(--accent-font, sans-serif);
   background-color: transparent;
-  transition: box-shadow .3s ease-in-out;
+  transition: box-shadow .3s ease;
   cursor: pointer;
 }
 
@@ -211,6 +210,9 @@
 }
 
 .card__icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 54px;
   height: 38px;
   border: 2px solid transparent;
@@ -246,7 +248,7 @@
   gap: 10px;
   width: 340px;
   min-height: 51px;
-  margin: 0 auto 80px;
+  margin: 0 auto 102px;
   border: 2px solid var(--accent-color);
   padding: 15px 0;
   font: var(--font-size-min) / 90% var(--accent-font, fantasy);
@@ -254,7 +256,7 @@
 }
 
 .button__text {
-  z-index: 3;
+  z-index: 2;
   color: var(--color-button-text);
   mix-blend-mode: difference;
 }
@@ -263,16 +265,15 @@
   text-transform: uppercase;
 }
 
-.pop__up__button {
-  width: 269px;
-  height: 38px;
-  margin-top: 30px;
+dialog::backdrop {
+  background-color: #000000bf;
 }
 
 .pop__up {
   width: 357px;
   border: 2px solid var(--accent-color);
-  padding: 32px 42px;
+  padding: 32px;
+  overflow: hidden;
   font-family: var(--accent-font, fantasy);
   font-size: 14px;
   text-transform: uppercase;
@@ -280,29 +281,28 @@
 }
 
 .pop__up__window {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 30px;
 }
 
 .pop__up__text {
-  display: block;
-  margin-left: 20px;
+  width: 196px;
   color: var(--accent-color);
   line-height: 150%;
-  text-transform: uppercase;
+  margin-left: 20px;
 }
 
 .pop__up__image {
   z-index: 2;
-  width: 90px;
-  height: 40px;
+  width: 39px;
   color: var(--accent-color);
 }
 
-dialog::backdrop {
-  background-color: #000000bf;
+.pop__up__button {
+  width: 293px;
 }
 
 @media (width <=376px) {
@@ -314,6 +314,10 @@ dialog::backdrop {
     gap: 48.5px;
   }
 
+  .mark {
+    right: 10px;
+  }
+
   .save__button {
     display: flex;
     flex-direction: column;
@@ -322,9 +326,18 @@ dialog::backdrop {
     min-height: 80px;
   }
 
+  .pop__up {
+    width: 341px;
+    padding: 30px 40px;
+  }
+
+  .pop__up__button {
+    width: 257px;
+  }
+
   .floppy {
-    width: 28px;
-    height: 28px;
+    width: 29px;
+    height: 29px;
   }
 }
 
