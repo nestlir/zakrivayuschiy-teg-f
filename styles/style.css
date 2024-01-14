@@ -253,6 +253,7 @@
   padding: 15px 0;
   font: var(--font-size-min) / 90% var(--accent-font, fantasy);
   background-color: var(--background-color);
+  color: var(--color-button-text);
 }
 
 .button__text {
