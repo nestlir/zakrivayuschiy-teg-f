@@ -286,18 +286,29 @@ dialog::backdrop {
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 30px;
 }
 
 .pop__up__text {
   width: 196px;
   line-height: 150%;
-  margin-left: 48px;
+  margin-left: 20px;
 }
 
 .pop__up__button {
   width: 293px;
+}
+
+.floppy {
+  z-index: 2;
+  width: 21px;
+  height: 21px;
+  mix-blend-mode: difference;
+}
+
+.border_img {
+  border-top: 2px solid var(--accent-color);
 }
 
 @media (width <=376px) {
@@ -330,20 +341,8 @@ dialog::backdrop {
     width: 257px;
   }
 
-  .pop__up__text {
-    width: 196px;
-    line-height: 150%;
-    margin-left: 15px;
+  .floppy {
+    width: 28px;
+    height: 28px;
   }
-}
-
-.floppy {
-  z-index: 2;
-  width: 21px;
-  height: 21px;
-  mix-blend-mode: difference;
-}
-
-.border_img {
-  border-top: 2px solid var(--accent-color);
 }
