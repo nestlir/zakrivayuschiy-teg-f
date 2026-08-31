@@ -1,15 +1,41 @@
-/* В этом файле уже написаны некоторые базовые стили, которые сбрасывают или преобразуют дефольное браузерное поведение.
-Здесь же лежит утилитарный класс visually-hidden на случай, если нужно скрыть какой-то элемент, но оставить доступным для скринридера.
-Вы можете изменять этот файл или дополнять. Но скорее всего, вам это не потребуется. */
+/* Base reset and shared accessibility utilities. */
 
 *,
-*::after,
-*::before {
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+  min-inline-size: 320px;
+}
+
+img,
+svg {
+  display: block;
+}
+
+img {
+  max-inline-size: 100%;
+}
+
+button,
+input {
+  color: currentColor;
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
 }
 
 h1,
@@ -28,13 +54,6 @@ li {
 
 a {
   color: inherit;
-}
-
-button,
-input {
-  color: currentColor;
-  font-family: inherit;
-  font-size: inherit;
 }
 
 ul,

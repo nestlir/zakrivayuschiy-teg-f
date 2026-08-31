@@ -1,36 +1,50 @@
-# Закрывающий тег — Interactive Web Page
+# Закрывающий тег
 
-> Responsive web page combining editorial layout, interactive states and visual storytelling.
+> Интерактивная адаптивная веб-страница о пути обучения во фронтенд-разработке.
 
-[**Live demo →**](https://nestlir.github.io/zakrivayuschiy-teg-f/)
+**Стек:** HTML5 · CSS3 · JavaScript · GitHub Pages
 
-## Overview
+## Демо
 
-A frontend implementation built around a strong visual concept. The project demonstrates the ability to turn a design into a responsive, production-style interface while paying attention to typography, composition, interaction and browser behavior.
+После публикации GitHub Pages проект доступен по адресу:
 
-## What I demonstrated
+https://nestlir.github.io/zakrivayuschiy-teg-f/
 
-- responsive page architecture;
-- semantic HTML5;
-- modern CSS layout techniques;
-- interactive UI states;
-- image and decorative asset composition;
-- typography and spacing control;
-- implementation accuracy across screen sizes.
+## Возможности
 
-## Stack
+- адаптивная вёрстка для разных размеров экрана;
+- семантическая HTML-разметка;
+- переключение светлой, тёмной и автоматической темы;
+- сохранение выбранной темы в `localStorage`;
+- интерактивные состояния кнопок и карточек;
+- CSS-фильтры и анимации;
+- декоративная пиксельная графика и SVG.
 
-**HTML5 · CSS3 · JavaScript · responsive design · GitHub Pages**
+## Структура
 
-## Run locally
+```text
+.
+├── fonts/       # локальные шрифты
+├── images/      # изображения
+├── scripts/     # JavaScript
+├── styles/      # стили, темы и анимации
+├── svg/         # SVG-ассеты
+└── index.html   # точка входа
+```
+
+## Запуск локально
 
 ```bash
 git clone https://github.com/nestlir/zakrivayuschiy-teg-f.git
 cd zakrivayuschiy-teg-f
 ```
 
-Open `index.html` or serve the directory with a static HTTP server.
+Для простого просмотра можно открыть `index.html` в браузере. Для разработки удобнее использовать локальный HTTP-сервер, например VS Code Live Server.
 
-## Context
+## Что демонстрирует проект
 
-Originally created as a frontend project; presented here as a case study in visual implementation, responsive behavior and interactive frontend details.
+Проект посвящён точной визуальной реализации интерфейса: работе с типографикой, композицией, адаптивностью, CSS-состояниями и интерактивными деталями. Выбранная пользователем тема сохраняется между посещениями страницы.
+
+## Автор
+
+Anastasia Kuzmina
